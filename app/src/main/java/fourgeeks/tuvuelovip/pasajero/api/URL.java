@@ -36,8 +36,8 @@ public enum URL {
     //MAIN URL
 
 //    public final static String MAIN_URL = "http://192.168.0.19:8000/";
-
-    public final static String MAIN_URL = "https://dev-api.tuvuelovip.com/";
+      public final static String MAIN_URL= "http://192.168.0.19:8080/";
+    //  public final static String MAIN_URL = "https://dev-api.tuvuelovip.com/";
 //    public final static String MAIN_URL = "http://198.211.99.79/";
 
     public final static String IMAGE = MAIN_URL + "image/";

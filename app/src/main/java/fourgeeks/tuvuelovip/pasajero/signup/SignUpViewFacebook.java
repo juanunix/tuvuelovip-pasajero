@@ -7,6 +7,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class SignUpViewFacebook extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
         view = inflater.inflate(R.layout.view_singup_facebook, container, false);
+        Toast.makeText(getActivity(),getString(R.string.facebook_help),Toast.LENGTH_LONG).show();
         Bundle bundle = getArguments();
         email = (TextInputEditText) view.findViewById(R.id.email);
         email.setText(bundle.getString("email"));

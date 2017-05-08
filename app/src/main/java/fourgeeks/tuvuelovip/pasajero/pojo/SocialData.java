@@ -17,9 +17,9 @@ public class SocialData {
     @SerializedName("registered")
     @Expose
     public Boolean registered;
-    @SerializedName("Token")
+    @SerializedName("token")
     @Expose
-    public String Token;
+    public String token;
 
     public SocialData(){}
 
@@ -45,7 +45,7 @@ public class SocialData {
         return registered;
     }
     public String getToken(){
-        return Token;
+        return token;
     }
 
 

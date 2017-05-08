@@ -496,7 +496,7 @@ public final class Cache {
      */
     public static Retrofit getAuthRetrofitInstance() {
         if(getUserToken() == null)
-            throw new IllegalArgumentException("Impossible to create a Auth Retrofit instance with out a Token");
+            throw new IllegalArgumentException("Impossible to create a Auth Retrofit instance without a Token");
         if (authRetrofit == null)
             buildAuthRetrofit();
         return authRetrofit;

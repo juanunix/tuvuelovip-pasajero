@@ -1,6 +1,7 @@
 package fourgeeks.tuvuelovip.pasajero.signup;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import fourgeeks.tuvuelovip.pasajero.PassengerMain;
 import fourgeeks.tuvuelovip.pasajero.passanger.terms.TermsService;
 import fourgeeks.tuvuelovip.pasajero.pojo.Terms;
 import fourgeeks.tuvuelovip.pasajero.R;
@@ -76,6 +78,8 @@ public class TermsFloatingView extends DialogFragment {
             public void onClick(View view) {
                 Cache.setTermsAndConditionsWereAccepted(true);
                 getFragmentManager().popBackStack();
+                Intent goToPassanger = new Intent(getActivity(),PassengerMain.class);
+                startActivity(goToPassanger);
             }
         });
 

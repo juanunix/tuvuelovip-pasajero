@@ -123,10 +123,11 @@ public class LoginView extends Fragment {
                     loginButton.performClick();
                     loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email","id"));
                 }else {
-                   /*Log.i("Facebook Result","you are log in");
-                   LoginManager.getInstance().logOut();
-                   Log.i("Facebook Result","you are not");*/
-                    Toast.makeText(getActivity(), "ya tienes una cuenta iniciada en facebook", Toast.LENGTH_LONG).show();
+                   //verificar que tiene un token de la aplicacion y si lo tiene , enviar al usuario al passenger.Main
+                    Toast.makeText(getActivity(), "ya tienes una cuenta iniciada en facebook", Toast.LENGTH_SHORT).show();
+                    LoginManager.getInstance().logOut();
+                    Toast.makeText(getActivity(), "ya la cerre !", Toast.LENGTH_LONG).show();
+
                     //sendFacebookUser(AccessToken.getCurrentAccessToken().getToken(),null,null,null);
 
                 }
@@ -236,7 +237,7 @@ public class LoginView extends Fragment {
     private void initializeFacebookManager(){
         LoginManager.getInstance().registerCallback(callbackM, new FacebookCallback<LoginResult>() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
+            public void onSuccess(final LoginResult loginResult) {
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback(){
                             @Override
@@ -245,8 +246,8 @@ public class LoginView extends Fragment {
                                     sendFacebookUser(AccessToken.getCurrentAccessToken().getToken(),object.getString("first_name")
                                             ,object.getString("last_name"),object.getString("email"),object.getString("id"));
 
-
-
+                                     Log.i("user ID",loginResult.getAccessToken().getUserId());
+                                     Log.i("user acces",AccessToken.getCurrentAccessToken().getUserId());
                                     //Toast.makeText(getActivity(),"name: "+object.getString("name")+"\nemail: "+object.getString("email"),Toast.LENGTH_LONG).show();
 
                                 }catch (Exception e){
@@ -288,9 +289,12 @@ public class LoginView extends Fragment {
             public void onResponse(Call<SocialData> call, retrofit2.Response<SocialData> response) {
                 Log.i("onResponse code",""+response.code());
                 Log.i("onResponse rq",call.request().toString());
+                Log.i("SendFacebookUser", "Response from server " + response.body().getRegistered());
                 if(response.isSuccessful()){
                     Log.i("SendFacebookUser", "Response from server " + response.body().getRegistered());
-                    if(response.body().getRegistered()==false) {
+                   // Log.i("userId",userId);
+
+                    if(response.body().getRegistered() == false) {
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         SignUpViewFacebook signup_view = new SignUpViewFacebook();
@@ -305,10 +309,11 @@ public class LoginView extends Fragment {
                         signup_view.setArguments(bundle);
                         transaction.commit();
 
-                        Log.i("SendFacebookUser", "code: " + response.code());
+                        Log.i("onRespondeFalse", "code: " + response.code());
 
                     }else{
                         //get the token , safe it in the variable , and send the user to the PassengerMain.activity
+                        Log.i("onResponseTrue","true!!");
                         Cache.setUserToken(response.body().getToken());
                         Intent goToPassenger = new Intent(getActivity(), PassengerMain.class);
                         startActivity(goToPassenger);

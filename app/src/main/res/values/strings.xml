@@ -105,4 +105,5 @@
     <!--SOCIAL NETWORK-->
     <string name="facebook_app_id">1280473032001249</string>
     <string name="facebook_name">Facebook</string>
+    <string name="facebook_help">introduzca los datos faltantes para registrarse</string>
 </resources>

@@ -1,5 +1,6 @@
 package fourgeeks.tuvuelovip.pasajero.passanger.terms;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import fourgeeks.tuvuelovip.pasajero.PassengerMain;
 import fourgeeks.tuvuelovip.pasajero.R;
 import fourgeeks.tuvuelovip.pasajero.passanger.TabView;
 import fourgeeks.tuvuelovip.pasajero.pojo.Terms;
@@ -59,8 +61,9 @@ public class TermsView extends Fragment {
             }
         });
 
-        if (Cache.termsAndConditionsWereAccepted())
+        if (Cache.termsAndConditionsWereAccepted()) {
             acceptButton.setVisibility(View.GONE);
+        }
         else
             acceptButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -81,6 +84,7 @@ public class TermsView extends Fragment {
 
     private void back() {
         getActivity().onBackPressed();
+
     }
 
     private void acceptTerms() {

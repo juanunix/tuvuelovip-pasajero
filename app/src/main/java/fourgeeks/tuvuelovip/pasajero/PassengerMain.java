@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.io.IOException;
@@ -222,6 +223,8 @@ public class PassengerMain extends AppCompatActivity {
         }
 
         finish();
+        LoginManager.getInstance().logOut();
+        Log.i("Closing facebook","sesión cerrada");
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
 
         startActivity(intent);
