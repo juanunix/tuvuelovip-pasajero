@@ -103,6 +103,9 @@
     <string name="flight_rated">Vuelo Calificado</string>
 
     <!--SOCIAL NETWORK-->
+
     <string name="facebook_app_id">1280473032001249</string>
     <string name="facebook_name">Facebook</string>
+
+
 </resources>

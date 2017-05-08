@@ -1,5 +1,6 @@
 package fourgeeks.tuvuelovip.pasajero.signup;
 
+import fourgeeks.tuvuelovip.pasajero.pojo.UserFacebook;
 import fourgeeks.tuvuelovip.pasajero.util.Util;
 import fourgeeks.tuvuelovip.pasajero.pojo.User;
 import fourgeeks.tuvuelovip.pasajero.R;
@@ -78,5 +79,46 @@ public class SignUpController {
         User user = new User(password, countryId, lastName, firstName, username, email, dni, dni);
 
         return service.createUser(user);
+    }
+    /**
+     * Create a UserFacebook
+     * @param email
+     * @param username
+     * @param firstName
+     * @param lastName
+     * @param countryId
+     * @param facebook_token
+     * @param userId
+     * @return and Observable for creating a UserFacebook
+     */
+
+    public Single<UserFacebook> createUserFacebook(String email, String username, String firstName,
+                                                   String lastName, Integer countryId, String dni, String facebook_token,
+                                                   String userId) {
+
+        if (email.isEmpty())
+            return Util.createOnErrorSingle(String.valueOf(R.string.email_error));
+
+        if (!Util.isEmailValid(email))
+            return Util.createOnErrorSingle(String.valueOf(R.string.email_error));
+
+        if (username.isEmpty())
+            return Util.createOnErrorSingle(String.valueOf(R.string.username_error));
+
+        if (firstName.isEmpty())
+            return Util.createOnErrorSingle(String.valueOf(R.string.firstname_error));
+
+        if (lastName.isEmpty())
+            return Util.createOnErrorSingle(String.valueOf(R.string.lastname_error));
+
+        if (countryId == null || countryId == 0)
+            return Util.createOnErrorSingle(String.valueOf(R.string.country_error));
+
+        if (dni == null || dni.isEmpty())
+            return Util.createOnErrorSingle(String.valueOf(R.string.dni_error));
+
+        UserFacebook userF = new UserFacebook(countryId, lastName, firstName, username, email, dni, dni,facebook_token, userId);
+
+        return service.createUserFacebook(userF);
     }
 }

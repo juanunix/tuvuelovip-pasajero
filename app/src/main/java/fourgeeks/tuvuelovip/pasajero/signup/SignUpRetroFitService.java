@@ -3,6 +3,7 @@ package fourgeeks.tuvuelovip.pasajero.signup;
 import fourgeeks.tuvuelovip.pasajero.pojo.FirebaseToken;
 import fourgeeks.tuvuelovip.pasajero.pojo.Terms;
 import fourgeeks.tuvuelovip.pasajero.pojo.User;
+import fourgeeks.tuvuelovip.pasajero.pojo.UserFacebook;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -24,4 +25,8 @@ public interface SignUpRetroFitService {
 
     @HTTP(method = "DELETE", path = "mobile/profile/delete_token_push/", hasBody = true)
     Observable<Void> deleteToken(@Body FirebaseToken token);
+
+    @POST("signup-facebook-passenger/")
+    Observable<UserFacebook>createUserFacebook(@Body UserFacebook userFacebook);
+
 }

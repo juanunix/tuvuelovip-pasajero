@@ -3,6 +3,7 @@ package fourgeeks.tuvuelovip.pasajero.signup;
 import fourgeeks.tuvuelovip.pasajero.pojo.FirebaseToken;
 import fourgeeks.tuvuelovip.pasajero.pojo.Terms;
 import fourgeeks.tuvuelovip.pasajero.pojo.User;
+import fourgeeks.tuvuelovip.pasajero.pojo.UserFacebook;
 import rx.Observable;
 import rx.Single;
 
@@ -14,4 +15,6 @@ public interface SignUpServiceInterface {
     Single<User> createUser(User user);
     Single<Void> updateToken(FirebaseToken token);
     Single<Void> deleteToken(FirebaseToken token);
+    Single<UserFacebook>createUserFacebook(UserFacebook userFacebook);
+
 }

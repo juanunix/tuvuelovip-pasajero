@@ -5,6 +5,7 @@ import android.util.Log;
 import fourgeeks.tuvuelovip.pasajero.pojo.FirebaseToken;
 import fourgeeks.tuvuelovip.pasajero.pojo.Terms;
 import fourgeeks.tuvuelovip.pasajero.pojo.User;
+import fourgeeks.tuvuelovip.pasajero.pojo.UserFacebook;
 import fourgeeks.tuvuelovip.pasajero.util.Cache;
 import fourgeeks.tuvuelovip.pasajero.util.Util;
 import retrofit2.Retrofit;
@@ -38,5 +39,10 @@ public class SignUpService implements SignUpServiceInterface {
     @Override
     public Single<Void> deleteToken(FirebaseToken token) {
         return service.deleteToken(token).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).toSingle();
+    }
+
+    @Override
+    public Single<UserFacebook> createUserFacebook(UserFacebook userFacebook) {
+        return service.createUserFacebook(userFacebook).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).toSingle();
     }
 }

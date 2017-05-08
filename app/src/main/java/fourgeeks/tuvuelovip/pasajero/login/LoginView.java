@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,11 +23,25 @@ import com.android.volley.NoConnectionError;
 import com.android.volley.Response;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+
+import fourgeeks.tuvuelovip.pasajero.pojo.SocialData;
+import fourgeeks.tuvuelovip.pasajero.signup.SignUpViewFacebook;
 import fourgeeks.tuvuelovip.pasajero.util.Cache;
 import fourgeeks.tuvuelovip.pasajero.util.ViewTags;
 import fourgeeks.tuvuelovip.pasajero.api.APP;
@@ -36,6 +51,8 @@ import fourgeeks.tuvuelovip.pasajero.PassengerMain;
 import fourgeeks.tuvuelovip.pasajero.login.recoverpassword.RequestRecoverPasswordView;
 import fourgeeks.tuvuelovip.pasajero.signup.SignUpView;
 import fourgeeks.tuvuelovip.pasajero.R;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 
 public class LoginView extends Fragment {
@@ -46,10 +63,17 @@ public class LoginView extends Fragment {
     private TextView forgot_password, signup;
     private Button init_button;
     private ProgressBar progressBar;
+    private CallbackManager callbackM;
+    private LinearLayout facebookView;
+    private LoginButton loginButton;
+    private LoginRetroFitService service;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //callBack de facebook
+        FacebookSdk.sdkInitialize(getActivity());
+        callbackM = CallbackManager.Factory.create();
 
         view = inflater.inflate(R.layout.view_login, container, false);
         user = (TextInputEditText) view.findViewById(R.id.user);
@@ -59,6 +83,10 @@ public class LoginView extends Fragment {
         init_button = (Button) view.findViewById(R.id.init_button);
         progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
         Cache.setTermsAndConditionsWereAccepted(false);
+        facebookView = (LinearLayout) view.findViewById(R.id.facebook_view);
+        loginButton=(LoginButton)view.findViewById(R.id.login_button);
+        loginButton.setFragment(this);
+        initializeFacebookManager();
         return view;
 
     }
@@ -86,6 +114,27 @@ public class LoginView extends Fragment {
             }
         });
 
+        service = LoginController.getFacebookService();
+        facebookView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(AccessToken.getCurrentAccessToken()==null) {
+                    Log.i("Facebook Result","you aren't log in");
+                    loginButton.performClick();
+                    loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email","id"));
+                }else {
+                   /*Log.i("Facebook Result","you are log in");
+                   LoginManager.getInstance().logOut();
+                   Log.i("Facebook Result","you are not");*/
+                    Toast.makeText(getActivity(), "ya tienes una cuenta iniciada en facebook", Toast.LENGTH_LONG).show();
+                    //sendFacebookUser(AccessToken.getCurrentAccessToken().getToken(),null,null,null);
+
+                }
+
+
+
+            }
+        });
     }
 
     public void init_passanger() {
@@ -182,6 +231,101 @@ public class LoginView extends Fragment {
         transaction.addToBackStack("view_login");
         transaction.add(R.id.holder_content, signup_view, "signup_view");
         transaction.commit();
+    }
+
+    private void initializeFacebookManager(){
+        LoginManager.getInstance().registerCallback(callbackM, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback(){
+                            @Override
+                            public void onCompleted(JSONObject object, GraphResponse response) {
+                                try{
+                                    sendFacebookUser(AccessToken.getCurrentAccessToken().getToken(),object.getString("first_name")
+                                            ,object.getString("last_name"),object.getString("email"),object.getString("id"));
+
+
+
+                                    //Toast.makeText(getActivity(),"name: "+object.getString("name")+"\nemail: "+object.getString("email"),Toast.LENGTH_LONG).show();
+
+                                }catch (Exception e){
+                                    Log.e("Error in JsonFacebook: ",e.getMessage());
+                                }
+                            }
+                        });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields","id,name,email,first_name,last_name");
+                request.setParameters(parameters);
+                request.executeAsync();
+
+            }
+
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Toast.makeText(getActivity(),"Error: "+error.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackM.onActivityResult(requestCode,resultCode,data);
+    }
+
+    private void sendFacebookUser(final String access_token, final String name, final String lastName, final String email,
+                                  final String userId){
+        Log.i("SendFacebookUser",access_token);
+        service.sendFacebook(access_token).enqueue(new Callback<SocialData>() {
+            @Override
+            public void onResponse(Call<SocialData> call, retrofit2.Response<SocialData> response) {
+                Log.i("onResponse code",""+response.code());
+                Log.i("onResponse rq",call.request().toString());
+                if(response.isSuccessful()){
+                    Log.i("SendFacebookUser", "Response from server " + response.body().getRegistered());
+                    if(response.body().getRegistered()==false) {
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transaction = fragmentManager.beginTransaction();
+                        SignUpViewFacebook signup_view = new SignUpViewFacebook();
+                        transaction.addToBackStack("view_login");
+                        transaction.add(R.id.holder_content, signup_view, "signup_view_facebook");
+                        Bundle bundle = new Bundle();
+                        bundle.putString("name",name);
+                        bundle.putString("last",lastName);
+                        bundle.putString("email",email);
+                        bundle.putString("token",access_token);
+                        bundle.putString("userID",userId);
+                        signup_view.setArguments(bundle);
+                        transaction.commit();
+
+                        Log.i("SendFacebookUser", "code: " + response.code());
+
+                    }else{
+                        //get the token , safe it in the variable , and send the user to the PassengerMain.activity
+                        Cache.setUserToken(response.body().getToken());
+                        Intent goToPassenger = new Intent(getActivity(), PassengerMain.class);
+                        startActivity(goToPassenger);
+                        getActivity().finish();
+
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<SocialData> call, Throwable t) {
+                Log.e("SendFacebookUser","I coudn't conected code:"+
+                        call.hashCode()+" request :"+call.request().toString());
+            }
+        });
     }
 
 }
