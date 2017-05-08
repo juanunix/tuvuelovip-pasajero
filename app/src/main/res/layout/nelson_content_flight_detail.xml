@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="fourgeeks.tuvuelovip.pasajero.PassengerMain">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_slider"
+            android:layout_width="match_parent"
+            android:padding="0dp"
+            android:layout_height="200dp">
+        </android.support.v4.view.ViewPager>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/flight_details_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    tools:text="27 Sep" />
+
+                <View
+                    android:id="@+id/separator_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/flight_details_date"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/gold" />
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator_1"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center"
+                    android:text="Aeropuerto de Salida"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/codigo_aeropuerto_salida"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text1"
+                    android:layout_centerInParent="true"
+                    android:drawableEnd="@drawable/icon_arrow_out"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:textSize="30sp"
+                    tools:text="VLN" />
+
+                <TextView
+                    android:id="@+id/nombre_ciudad_salida"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/codigo_aeropuerto_salida"
+                    android:gravity="center"
+                    tools:text="Valencia" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gold" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/flight_details_hour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    tools:text="08:00 PM" />
+
+                <View
+                    android:id="@+id/separator_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/flight_details_hour"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/gold" />
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator_2"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center"
+                    android:text="Aeropuerto de Llegada"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/codigo_aeropuerto_arrivo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text2"
+                    android:layout_centerInParent="true"
+                    android:drawableEnd="@drawable/icon_arrow_in"
+                    android:drawablePadding="4dp"
+                    android:drawableRight="@drawable/icon_person"
+                    android:gravity="center"
+                    android:textSize="30sp"
+                    tools:text="PMV" />
+
+                <TextView
+                    android:id="@+id/nombre_ciudad_arrivo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/codigo_aeropuerto_arrivo"
+                    android:gravity="center"
+                    tools:text="Porlamar" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/gold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Trayectos"
+            android:textSize="24sp" />
+
+        <ListView
+            android:id="@+id/journeys_list_flight_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:textSize="24sp"></ListView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/gold" />
+        <!-- Detalles del AVion-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Detalles del Avión Sugerido"
+            android:textSize="24sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/modelo_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modelo" />
+
+            <TextView
+                android:id="@+id/modelo_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/modelo_label"
+                android:layout_toRightOf="@+id/modelo_label"
+                android:gravity="end"
+                tools:text="Gulfstream G650" />
+
+            <View
+                android:id="@+id/modelo_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/modelo_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gold" />
+
+            <TextView
+                android:id="@+id/asientos_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/modelo_separator"
+                android:text="Asientos" />
+
+            <TextView
+                android:id="@+id/asientos_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/modelo_separator"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/asientos_label"
+                android:layout_toRightOf="@+id/asientos_label"
+                android:gravity="end"
+                tools:text="16" />
+
+            <View
+                android:id="@+id/asientos_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/asientos_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gold" />
+
+            <TextView
+                android:id="@+id/year_fabricacion_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/asientos_separator"
+                android:text="Año de Fabricación" />
+
+            <TextView
+                android:id="@+id/fabrication_year_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/asientos_separator"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/year_fabricacion_label"
+                android:layout_toRightOf="@+id/year_fabricacion_label"
+                android:gravity="end"
+                tools:text="2005" />
+
+            <View
+                android:id="@+id/year_fabricacion_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/year_fabricacion_label"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gold" />
+
+            <TextView
+                android:id="@+id/clase_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/year_fabricacion_separator"
+                android:text="Clase" />
+
+            <TextView
+                android:id="@+id/clase_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/year_fabricacion_separator"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/clase_label"
+                android:layout_toRightOf="@+id/clase_label"
+                android:gravity="end"
+                tools:text="Light" />
+
+            <View
+                android:id="@+id/clase_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/clase_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gold" />
+
+            <TextView
+                android:id="@+id/observaciones_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/clase_separator"
+                android:layout_marginBottom="4dp"
+                android:text="Observaciones del avión"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/observaciones_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/observaciones_label"
+                android:textSize="14sp"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
+
+            <View
+                android:id="@+id/observaciones_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/observaciones_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gold" />
+
+            <TextView
+                android:id="@+id/terminos_y_condiciones_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/observaciones_separator"
+                android:layout_marginBottom="4dp"
+                android:text="Terminos y Condiciones:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/terms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/terminos_y_condiciones_label"
+                android:textSize="14sp"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/terms"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gold" />
+        </RelativeLayout>
+
+        <!-- Caracteristicas del piloto -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Caracteristicas del Piloto"
+            android:textSize="24sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/age_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edad" />
+
+            <TextView
+                android:id="@+id/age_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/age_label"
+                android:layout_toRightOf="@+id/age_label"
+                android:gravity="end"
+                tools:text="33" />
+
+            <View
+                android:id="@+id/age_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/age_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gold" />
+
+            <TextView
+                android:id="@+id/license_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/age_separator"
+                android:text="Licencia" />
+
+            <TextView
+                android:id="@+id/license_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/age_separator"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/license_label"
+                android:layout_toRightOf="@+id/license_label"
+                android:gravity="end"
+                tools:text="16" />
+
+            <View
+                android:id="@+id/license_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/license_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gold" />
+
+            <TextView
+                android:id="@+id/medic_certificate_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/license_separator"
+                android:text="Certificado Médico" />
+
+            <TextView
+                android:id="@+id/medic_certificate_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/license_separator"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/medic_certificate_label"
+                android:layout_toRightOf="@+id/medic_certificate_label"
+                android:gravity="end"
+                tools:text="2005" />
+
+            <View
+                android:id="@+id/medic_certificate_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/medic_certificate_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gold" />
+
+            <TextView
+                android:id="@+id/flight_hours_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/medic_certificate_separator"
+                android:text="Horas de Vuelo" />
+
+            <TextView
+                android:id="@+id/flight_hours_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/medic_certificate_separator"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/flight_hours_label"
+                android:layout_toRightOf="@+id/flight_hours_label"
+                android:gravity="end"
+                tools:text="2005" />
+
+            <View
+                android:id="@+id/flight_hours_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/flight_hours_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gold" />
+
+        </RelativeLayout>
+
+
+        <!-- Fin de Caracteristicas del Piloto-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Comodidades:"
+            android:textSize="24sp" />
+
+        <!--
+
+            <android.support.v7.widget.RecyclerView
+            android:id="@+id/comodidades_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp" />
+
+        -->
+
+        <GridView
+            android:id="@+id/comforts_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:columnWidth="85dp"
+            android:numColumns="auto_fit"
+            android:horizontalSpacing="5dp"
+            android:verticalSpacing="10dp"
+            android:stretchMode="columnWidth"></GridView>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/iata_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VLN"
+        android:textColor="@color/gold"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/img_iata_out"
+        android:layout_width="25dp"
+        android:layout_height="23dp"
+        android:src="@drawable/icon_arrow_out"
+        app:layout_constraintLeft_toRightOf="@+id/iata_out"
+        app:layout_constraintTop_toTopOf="@+id/iata_out" />
+
+    <TextView
+        android:id="@+id/iata_out_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Red Deer Indsutrial"
+        android:textColor="@color/gold"
+        android:textSize="12sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/iata_out"
+        app:layout_constraintRight_toRightOf="@+id/iata_out"
+        app:layout_constraintTop_toBottomOf="@+id/iata_out" />
+
+    <!--////////////////-->
+
+    <TextView
+        android:id="@+id/iata_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:gravity="top"
+        android:text="PMV"
+        android:textColor="@color/gold"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toRightOf="@+id/img_iata_out"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/img_iata_in"
+        android:layout_width="25dp"
+        android:layout_height="23dp"
+        android:src="@drawable/icon_arrow_in"
+        android:textColor="@color/grey"
+        app:layout_constraintLeft_toRightOf="@+id/iata_in"
+        app:layout_constraintTop_toTopOf="@+id/iata_in" />
+
+    <TextView
+        android:id="@+id/iata_in_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:text="Porlamar"
+        android:textColor="@color/gold"
+        android:textSize="12sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/iata_in"
+        app:layout_constraintRight_toLeftOf="@+id/img_iata_in"
+        app:layout_constraintTop_toBottomOf="@+id/iata_in" />
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="10dp"
+        android:layout_height="2dp"
+        android:background="@color/gold"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/separator"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/date_flight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20/12/2016"
+            android:textColor="@color/gold"
+            android:textSize="16sp"
+
+            />
+
+        <TextView
+            android:layout_marginStart="8dp"
+            android:id="@+id/hora_salida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="08:00"
+            android:textColor="@color/gold"
+            android:textSize="16sp"
+            android:textStyle="normal|bold" />
+
+
+
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

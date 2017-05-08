@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@drawable/xxxhdpi3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleLarge"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/H1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textColorHint="@color/white"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textView6">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/email_text_forgot_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_mail"
+                android:drawablePadding="7dp"
+                android:hint="Ingrese su correo"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:maxLines="1"
+                android:inputType="text"
+                android:imeOptions="actionDone"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="0dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:text="Presione recuperar y un código sera enviado a su correo para renovar su contraseña"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            app:layout_constraintHorizontal_bias="0.53" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_height="wrap_content"
+            android:text="Si ya posee un código, presione Ingresar Código: "
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <Button
+            android:id="@+id/recover_button"
+            android:layout_width="0dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_height="48dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/main_button"
+            android:layout_marginTop="48dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            android:text="Recuperar"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/code_button"
+            android:layout_width="0dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_height="48dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/main_button"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/recover_button"
+            android:text="Ingresar Código"
+            android:textSize="16sp"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_forgot_view"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
+
+<!--<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/xxxhdpi3"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/H1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="295dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textColorHint="@color/white">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/email_text_forgot_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_mail"
+            android:drawablePadding="7dp"
+            android:hint="Ingrese su correo"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/recover_button"
+        android:layout_alignEnd="@+id/H1"
+        android:layout_alignLeft="@+id/recover_button"
+        android:layout_alignRight="@+id/H1"
+        android:layout_alignStart="@+id/recover_button"
+        android:layout_marginBottom="68dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:text="Presione recuperar y un código sera enviado a su correo para renovar su contraseña"
+        android:textAlignment="center"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/recover_button"
+        android:layout_alignEnd="@+id/H1"
+        android:layout_alignLeft="@+id/recover_button"
+        android:layout_alignRight="@+id/H1"
+        android:layout_alignStart="@+id/recover_button"
+        android:layout_marginBottom="48dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:text="Si ya posee un código, presione Ingresar Código: "
+        android:textAlignment="center"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/recover_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignEnd="@+id/H1"
+        android:layout_alignLeft="@+id/H1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/H1"
+        android:layout_alignStart="@+id/H1"
+        android:layout_marginBottom="150dp"
+        android:background="@drawable/main_button"
+        android:text="Recuperar"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/code_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignEnd="@+id/H1"
+        android:layout_alignLeft="@+id/H1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/H1"
+        android:layout_alignStart="@+id/H1"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/main_button"
+        android:text="Ingresar Código"
+        android:textSize="16sp" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_forgot_view"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp"
+        android:visibility="gone" />
+
+</RelativeLayout>-->

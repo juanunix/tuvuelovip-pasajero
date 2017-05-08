@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="5dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/airplane_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Gulfstream G50"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/journey_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/icon_seat"
+            android:drawablePadding="4dp"
+            android:text="12"
+            android:textColor="@color/grey"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/flight_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="9.999,00 USD"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintRight_toRightOf="@+id/hora_salida"
+            app:layout_constraintTop_toBottomOf="@+id/hora_salida" />
+
+        <!-- ////////////////// -->
+
+        <TextView
+            android:id="@+id/iata_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="VLN"
+            android:textColor="@color/grey"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/airplane_model"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/img_iata_out"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:src="@drawable/icon_arrow_out"
+            app:layout_constraintBottom_toBottomOf="@+id/iata_out"
+            app:layout_constraintLeft_toRightOf="@+id/iata_out"
+            app:layout_constraintTop_toTopOf="@+id/iata_out"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/iata_out_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:text="Valencia"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/iata_out"
+            app:layout_constraintRight_toRightOf="@+id/iata_out"
+            app:layout_constraintTop_toBottomOf="@+id/iata_out"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <!--////////////////-->
+
+        <TextView
+            android:id="@+id/iata_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="top"
+            android:text="PMV"
+            android:textColor="@color/grey"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/img_iata_out"
+            app:layout_constraintTop_toBottomOf="@+id/airplane_model"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/img_iata_in"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_arrow_in"
+            android:textColor="@color/grey"
+            app:layout_constraintBottom_toBottomOf="@+id/iata_in"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@+id/iata_in"
+            app:layout_constraintRight_toLeftOf="@+id/linea"
+            app:layout_constraintTop_toTopOf="@+id/iata_in"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/iata_in_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:text="Porlamar"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/iata_in"
+            app:layout_constraintRight_toLeftOf="@+id/img_iata_in"
+            app:layout_constraintTop_toBottomOf="@+id/iata_in" />
+
+        <TextView
+            android:id="@+id/status_vuelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/flight_status"
+            android:textAlignment="center"
+            android:textColor="@color/grey"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/linea"
+            app:layout_constraintTop_toBottomOf="@+id/iata_out_city" />
+
+        <TextView
+            android:id="@+id/disponibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pagado"
+            android:textColor="@color/grey"
+            android:textSize="18sp"
+            android:textStyle="normal|bold|italic"
+            app:layout_constraintLeft_toLeftOf="@+id/status_vuelo"
+            app:layout_constraintRight_toRightOf="@+id/status_vuelo"
+            app:layout_constraintTop_toBottomOf="@+id/status_vuelo" />
+
+        <TextView
+            android:id="@+id/hora_salida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="08:00 pm"
+            android:textColor="@color/grey"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintRight_toRightOf="@+id/date_flight"
+            app:layout_constraintTop_toBottomOf="@+id/date_flight"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/date_flight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Fecha: 20/12/2016"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            android:textStyle="normal|bold"
+            app:layout_constraintRight_toRightOf="@+id/journey_seats"
+            app:layout_constraintTop_toBottomOf="@+id/journey_seats" />
+
+        <TextView
+            android:id="@+id/titulo_metodo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/payment_method"
+            android:textColor="@color/grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/linea"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iata_out_city"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/metodo_pago"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PayPal"
+            android:textColor="@color/grey"
+            android:textSize="18sp"
+            android:textStyle="normal|bold|italic"
+            app:layout_constraintLeft_toLeftOf="@+id/titulo_metodo"
+            app:layout_constraintRight_toRightOf="@+id/titulo_metodo"
+            app:layout_constraintTop_toBottomOf="@+id/titulo_metodo" />
+
+        <FrameLayout
+            android:id="@+id/linea"
+            android:layout_width="1dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/gold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/flight_price"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.26">
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayout3"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/grey"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/disponibility">
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/cancel_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/cancel"
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            android:textStyle="normal|bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout3"
+            app:layout_constraintVertical_bias="0.52" />
+
+        <TextView
+            android:id="@+id/taken_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/flight_taken_question"
+            android:textColor="@color/gold"
+            android:textSize="18sp"
+            android:textStyle="normal|bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout3"
+            app:layout_constraintVertical_bias="0.52" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

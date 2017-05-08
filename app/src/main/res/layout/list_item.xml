@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dip"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/line_1"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/grey"></View>
+
+    <TextView
+        android:id="@+id/outIata"
+        android:layout_width="85dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:drawableRight="@drawable/icon_arrow_out"
+        android:gravity="center"
+        android:text="VLN"
+        android:textColor="@color/grey"
+        android:textColorHint="@color/grey"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/inIata"
+        android:layout_width="85dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="2dp"
+        android:drawableLeft="@drawable/icon_arrow_in"
+        android:gravity="center"
+        android:text="PMV"
+        android:textColor="@color/grey"
+        android:textColorHint="@color/grey"
+        android:textSize="24sp" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="80dp"
+        android:layout_height="55dip"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/outHour"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="08:00 pm"
+            android:textColor="@color/grey"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/outDate"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="16dp"
+            android:maxLength="7"
+            android:text="26 Sep"
+            android:textColor="@color/grey"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="55dip"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/journey_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="0dp"
+            android:drawableRight="@drawable/icon_seat"
+            android:textAlignment="center"
+            android:text="12"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/flight_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="9.999,00 USD"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+</LinearLayout>

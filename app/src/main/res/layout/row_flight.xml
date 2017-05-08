@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/airplane_photo"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#000000"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/main_logo" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/airplane_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="Gulfstream G50"
+                    android:textColor="@color/grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/journey_seats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/airplane_model"
+                    android:layout_toRightOf="@id/airplane_model"
+                    android:drawableLeft="@drawable/icon_seat"
+                    android:drawablePadding="4dp"
+                    android:text="12"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/flight_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/journey_seats"
+                    android:layout_toRightOf="@+id/journey_seats"
+                    android:gravity="end"
+                    android:text="9.999,00 USD"
+                    android:textColor="@color/grey"
+                    android:textSize="16sp" />
+
+                <!-- ////////////////// -->
+
+                <TextView
+                    android:id="@+id/iata_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/airplane_model"
+                    android:text="VLN"
+                    android:textColor="@color/grey"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/img_iata_out"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_above="@+id/iata_out_city"
+                    android:layout_below="@id/airplane_model"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toRightOf="@id/iata_out"
+                    android:src="@drawable/icon_arrow_out" />
+
+                <TextView
+                    android:id="@+id/iata_out_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/img_iata_out"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignRight="@+id/img_iata_out"
+                    android:layout_below="@id/iata_out"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="Valencia"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp" />
+
+                <!--////////////////-->
+
+                <TextView
+                    android:id="@+id/iata_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/airplane_model"
+                    android:layout_toEndOf="@id/img_iata_out"
+                    android:layout_toRightOf="@id/img_iata_out"
+                    android:gravity="top"
+                    android:text="PMV"
+                    android:textColor="@color/grey"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/img_iata_in"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_above="@+id/iata_in_city"
+                    android:layout_below="@+id/journey_seats"
+                    android:layout_toEndOf="@id/iata_in"
+                    android:layout_toRightOf="@id/iata_in"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_arrow_in"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/iata_in_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/img_iata_in"
+                    android:layout_alignRight="@+id/img_iata_in"
+                    android:layout_below="@id/iata_in"
+                    android:layout_toEndOf="@+id/img_iata_out"
+                    android:layout_toRightOf="@+id/img_iata_out"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="Porlamar"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/flight_schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/iata_in_city"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/flight_price"
+                    android:layout_toEndOf="@+id/img_iata_in"
+                    android:layout_toRightOf="@+id/img_iata_in"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|end"
+                    android:maxLines="1"
+                    android:text="15:00"
+                    android:textColor="@color/grey"
+                    android:textSize="24sp"
+                    android:layout_marginEnd="20dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/flight_date"
+            android:layout_width="35dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/icon_flag"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            tools:text="27\nSep" />
+
+    </FrameLayout>
+
+
+</RelativeLayout>

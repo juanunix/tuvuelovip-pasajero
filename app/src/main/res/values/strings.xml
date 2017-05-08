@@ -1,0 +1,111 @@
+<resources>
+
+    <string name="app_name">Tu vuelo VIP\nPasajero</string>
+    <string name="launcher_name">Pasajero</string>
+    <string name="password">Contraseña</string>
+
+    <string name="welcome">Bienvenido\nPasajero</string>
+    <string name="install">Instalando...</string>
+    <string name="airport_install">Descargando Aeropuertos</string>
+    <string name="country_install">Descargando Paises</string>
+    <string name="seats_install">Descargando máximo número de asientos</string>
+    <string name="confort_install">Descargando Comodidades</string>
+
+    <string name="user">Usuario</string>
+    <string name="user_error">Ingrese usuario por favor</string>
+    <string name="forgot_password">Olvido Contraseña</string>
+    <string name="singup">Registrarse</string>
+    <string name="init_button">Iniciar Sesion</string>
+
+    <string name="email">Correo Electronico</string>
+    <string name="username">Usuario</string>
+    <string name="firts_name">Primer Nombre</string>
+    <string name="last_name">Primer Apellido</string>
+    <string name="country_auto">Pais</string>
+    <string name="password_confirm">Confirmar Contraseña</string>
+    <string name="signup_button">Registrar Pasajero</string>
+
+    <string name="terms">Terminos y Condiciones</string>
+    <string name="accept">Aceptar</string>
+    <string name="reject">Rechazar</string>
+
+    <!--Registro-->
+    <string name="register_success">Registro Exitoso!</string>
+    <string name="email_error">Ingrese un correo electrónico por favor</string>
+    <string name="username_error">Ingrese un nombre de usuario por favor</string>
+    <string name="firstname_error">Ingrese un primer nombre por favor</string>
+    <string name="lastname_error">Ingrese un segundo nombre por favor</string>
+    <string name="phone_error">Ingrese un número de telefono</string>
+    <string name="country_error">Debe seleccionar un país por favor</string>
+    <string name="password_error">Ingrese una contraseña por favor</string>
+    <string name="valid_password_error">La contraseña debe incluir números y letras</string>
+    <string name="matching_password_error">Las Contraseñas deben ser iguales</string>
+    <string name="profile_changed">Perfil Actualizado</string>
+    <string name="dni">Número de Identificación</string>
+    <string name="dni_error">Ingrese un número de identificación</string>
+
+    <!--API-->
+    <string name="loading">Cargando...</string>
+    <string name="timeout_error">Falla en tiempo de conexión</string>
+    <string name="server_error">Error en el servidor</string>
+
+    <!--Solicitudes de Vuelo-->
+    <string name="flight_request_register_success">Solicitud de Viaje almacenada</string>
+    <string name="booked_error">Este vuelo esta siendo comprado por otro usuario</string>
+    <string name="payment_error">El pago no pudo ser procesado</string>
+
+    <!--Aeropuerto Favoritos-->
+    <string name="aeropuertos_explicacion">Configure sus aeropuertos frecuentes y recibira
+        notificaciones de promociones de vuelos</string>
+
+    <string name="cancel_status">Cancelado</string>
+
+    <!--TABS -->
+    <string name="availables_flights">Vuelos Disponibles</string>
+    <string name="my_flight_requests">Mis Solicitudes de Vuelo</string>
+    <string name="my_flights">Mis Vuelos</string>
+
+    <string name="update">Actualizar</string>
+
+
+    <!--Flight Requests -->
+    <string name="no_journeys">No hay trayectos que guardar</string>
+    <string name="date">Fecha</string>
+    <string name="delete">Eliminar</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="flight_status">Estado del Vuelo</string>
+
+    <string name="payment_method">Método de Pago</string>
+    <string name="cancel">Cancelar</string>
+    <string name="cancel_flight_confirmation">Por favor, confirme la Cancelación del Vuelo</string>
+    <string name="confirm">Confirmar</string>
+    <string name="confirm_rating">Por favor, confirme la Calificación del Vuelo</string>
+    <string name="flight_taken_question">¿Vuelo Tomado?</string>
+    <string name="pilot_rating">Por favor, califique la experiencia con el Piloto</string>
+    <string name="comments">Comentarios</string>
+    <string name="save">Guardar</string>
+    <string name="flight_taken_answer">Vuelo Tomado</string>
+    <string name="flight_not_taken_answer">Vuelo No Tomado</string>
+    <string name="rate_flight">Calificar Vuelo</string>
+    <string name="flight_not_taken_comment">Por favor, indique las razones por las cuales el vuelo no fue tomado</string>
+    <string name="home">Inicio</string>
+    <string name="profile">Perfil</string>
+    <string name="favorite_airports">Aeropuertos Favoritos</string>
+    <string name="close_session">Cerrar Sesión</string>
+    <string name="must_accept_terms">Por favor, acepte los términos y condciones</string>
+    <string name="back">Atrás</string>
+    <string name="new_flight_request">Nueva Solicitud de Vuelo</string>
+    <string name="add_journey">Agregar Trayecto</string>
+    <string name="no">No</string>
+    <string name="yes">Si</string>
+    <string name="rate_error">Por favor, seleccione un rating válido</string>
+    <string name="review_error">Por favor, indique un comentario</string>
+    <string name="flight_rated">Vuelo Calificado</string>
+
+    <!--SOCIAL NETWORK-->
+
+    <string name="facebook_app_id">1280473032001249</string>
+    <string name="facebook_name">Facebook</string>
+
+
+</resources>

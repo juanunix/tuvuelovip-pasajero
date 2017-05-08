@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/profile"
+        android:title="@string/profile"/>
+
+    <item
+        android:id="@+id/favorite_airports"
+        android:title="@string/favorite_airports"/>
+
+    <item
+        android:id="@+id/terms_and_conditions"
+        android:title="@string/terms"/>
+
+    <item
+        android:id="@+id/close_sesion"
+        android:title="@string/close_session"/>
+
+</menu>

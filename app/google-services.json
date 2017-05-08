@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "575000916719",
+    "firebase_url": "https://tuvuelovip-2105e.firebaseio.com",
+    "project_id": "tuvuelovip-2105e",
+    "storage_bucket": "tuvuelovip-2105e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575000916719:android:a44e2d78d9fa5c12",
+        "android_client_info": {
+          "package_name": "fourgeeks.tuvuelovip.pasajero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575000916719-0mtvl0irr6ln10jc3gedb27bfemijt63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwzwfcHEqs-Bdj4e6etPzZ9XpCezMYp2A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

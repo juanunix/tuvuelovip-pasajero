@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/airport_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:text="Aeropuertos Favoritos"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.19" />
+
+            <TextView
+                android:id="@+id/user_message"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/aeropuertos_explicacion"
+                android:textAlignment="center"
+                android:textColor="@color/grey"
+                app:layout_constraintLeft_toLeftOf="@+id/title"
+                app:layout_constraintRight_toRightOf="@+id/title"
+                app:layout_constraintTop_toBottomOf="@+id/title" />
+
+            <Switch
+                android:id="@+id/notifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:enabled="false"
+                android:text="@string/notifications"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_message" />
+
+            <AutoCompleteTextView
+                android:id="@+id/aero_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:hint="Localidad"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.43"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/borrar1"
+                app:layout_constraintTop_toTopOf="@+id/notifications"
+                app:layout_constraintVertical_bias="0.110000014"
+                tools:layout_constraintLeft_creator="1"
+                tools:layout_constraintRight_creator="1"
+                tools:layout_constraintTop_creator="1" />
+
+            <View
+                android:id="@+id/borrar1"
+                android:layout_width="44dp"
+                android:layout_height="39dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/main_square_button"
+                app:layout_constraintBottom_toBottomOf="@+id/aero_1"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/aero_1"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/ic_borra1"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_delete_white_24px"
+                app:layout_constraintBottom_toBottomOf="@+id/borrar1"
+                app:layout_constraintLeft_toLeftOf="@+id/borrar1"
+                app:layout_constraintRight_toRightOf="@+id/borrar1"
+                app:layout_constraintTop_toTopOf="@+id/borrar1" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Aeropuerto numero 1"
+                android:textColor="@color/grey"
+                android:textStyle="normal|bold"
+                app:layout_constraintBottom_toTopOf="@+id/aero_1"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_1" />
+
+            <AutoCompleteTextView
+                android:id="@+id/aero_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:hint="Localidad"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textAlignment="center"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/borrar2"
+                app:layout_constraintTop_toBottomOf="@+id/aero_1" />
+
+            <View
+                android:id="@+id/borrar2"
+                android:layout_width="44dp"
+                android:layout_height="39dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/main_square_button"
+                app:layout_constraintBottom_toBottomOf="@+id/aero_2"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_2"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/aero_2"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/ic_borra2"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_delete_white_24px"
+                app:layout_constraintBottom_toBottomOf="@+id/borrar2"
+                app:layout_constraintLeft_toLeftOf="@+id/borrar2"
+                app:layout_constraintRight_toRightOf="@+id/borrar2"
+                app:layout_constraintTop_toTopOf="@+id/borrar2" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Aeropuerto numero 2"
+                android:textColor="@color/grey"
+                android:textStyle="normal|bold"
+                app:layout_constraintBottom_toTopOf="@+id/aero_2"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_2" />
+
+            <AutoCompleteTextView
+                android:id="@+id/aero_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="32dp"
+                android:hint="Localidad"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textAlignment="center"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_2"
+                app:layout_constraintRight_toLeftOf="@+id/borrar3"
+                app:layout_constraintTop_toBottomOf="@+id/aero_2" />
+
+            <View
+                android:id="@+id/borrar3"
+                android:layout_width="44dp"
+                android:layout_height="39dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/main_square_button"
+                app:layout_constraintBottom_toBottomOf="@+id/aero_3"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_3"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/aero_3"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/ic_borra3"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_delete_white_24px"
+                app:layout_constraintBottom_toBottomOf="@+id/borrar3"
+                app:layout_constraintLeft_toLeftOf="@+id/borrar3"
+                app:layout_constraintRight_toRightOf="@+id/borrar3"
+                app:layout_constraintTop_toTopOf="@+id/borrar3" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Aeropuerto numero 3"
+                android:textColor="@color/grey"
+                android:textStyle="normal|bold"
+                app:layout_constraintBottom_toTopOf="@+id/aero_3"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_3" />
+
+            <AutoCompleteTextView
+                android:id="@+id/aero_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="32dp"
+                android:hint="Localidad"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textAlignment="center"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_3"
+                app:layout_constraintRight_toLeftOf="@+id/borrar3"
+                app:layout_constraintTop_toBottomOf="@+id/aero_3" />
+
+            <View
+                android:id="@+id/borrar4"
+                android:layout_width="44dp"
+                android:layout_height="39dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/main_square_button"
+                app:layout_constraintBottom_toBottomOf="@+id/aero_4"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_4"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/aero_4"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/ic_borra4"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_delete_white_24px"
+                app:layout_constraintBottom_toBottomOf="@+id/borrar4"
+                app:layout_constraintLeft_toLeftOf="@+id/borrar4"
+                app:layout_constraintRight_toRightOf="@+id/borrar4"
+                app:layout_constraintTop_toTopOf="@+id/borrar4" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Aeropuerto numero 4"
+                android:textColor="@color/grey"
+                android:textStyle="normal|bold"
+                app:layout_constraintBottom_toTopOf="@+id/aero_4"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_4" />
+
+            <AutoCompleteTextView
+                android:id="@+id/aero_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="32dp"
+                android:hint="Localidad"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textAlignment="center"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_4"
+                app:layout_constraintRight_toLeftOf="@+id/borrar5"
+                app:layout_constraintTop_toBottomOf="@+id/aero_4" />
+
+            <View
+                android:id="@+id/borrar5"
+                android:layout_width="44dp"
+                android:layout_height="39dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/main_square_button"
+                app:layout_constraintBottom_toBottomOf="@+id/aero_5"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_5"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/aero_5"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/ic_borra5"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/ic_delete_white_24px"
+                app:layout_constraintBottom_toBottomOf="@+id/borrar5"
+                app:layout_constraintLeft_toLeftOf="@+id/borrar5"
+                app:layout_constraintRight_toRightOf="@+id/borrar5"
+                app:layout_constraintTop_toTopOf="@+id/borrar5" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Aeropuerto numero 5"
+                android:textColor="@color/grey"
+                android:textStyle="normal|bold"
+                app:layout_constraintBottom_toTopOf="@+id/aero_5"
+                app:layout_constraintLeft_toLeftOf="@+id/aero_5" />
+
+            <Button
+                android:id="@+id/guardar"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/main_button"
+                android:text="Guardar"
+                android:textStyle="normal|bold"
+                app:layout_constraintBaseline_creator="1"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aero_5"
+                app:layout_constraintVertical_bias="0.3" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
