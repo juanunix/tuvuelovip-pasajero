@@ -16,6 +16,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,21 +52,15 @@ public class SignUpViewFacebook extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
         view = inflater.inflate(R.layout.view_singup_facebook, container, false);
-        Toast.makeText(getActivity(),getString(R.string.facebook_help),Toast.LENGTH_LONG).show();
         Bundle bundle = getArguments();
         email = (TextInputEditText) view.findViewById(R.id.email);
-        email.setText(bundle.getString("email"));
         username = (TextInputEditText) view.findViewById(R.id.username);
         firtsName = (TextInputEditText) view.findViewById(R.id.firts_name);
-        firtsName.setText(bundle.getString("name"));
         lastName = (TextInputEditText) view.findViewById(R.id.last_name);
-        lastName.setText(bundle.getString("last"));
         countryAuto = (AutoCompleteTextView) view.findViewById(R.id.country_auto);
-        facebookToken=bundle.getString("token");
-        facebookUserId = bundle.getString("userID");
         dni = (TextInputEditText) view.findViewById(R.id.dni);
         signupButton = (Button) view.findViewById(R.id.singup_button);
-        //
+
         SignUpService signUpService = new SignUpService();
         controller = new SignUpController(signUpService);
         try {
@@ -83,17 +79,38 @@ public class SignUpViewFacebook extends Fragment {
         countryAuto.setAdapter(adapter);
 
         signupButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                if (Cache.termsAndConditionsWereAccepted()) {
-                    saveUser();
-                } else {
-                    showTerms();
+                if (checkFields()){
+
+                    if (Cache.termsAndConditionsWereAccepted()) {
+                        saveUser();
+                    } else {
+                        showTerms();
+                    }
+
                 }
             }
         });
         Cache.setTermsAndConditionsWereAccepted(false);
+        try{
+            email.setText(bundle.getString("email"));
+            firtsName.setText(bundle.getString("name").toString());
+            lastName.setText(bundle.getString("last"));
+            facebookToken=bundle.getString("token");
+            facebookUserId = bundle.getString("userID");
+            Toast.makeText(getActivity(),getString(R.string.facebook_help),Toast.LENGTH_LONG).show();
+
+        }catch (NullPointerException nu){
+
+            facebookToken = AccessToken.getCurrentAccessToken().getToken();
+            facebookUserId=AccessToken.getCurrentAccessToken().getUserId();
+            Log.i(TAG,"token"+facebookToken);
+        }
         return view;
+
+
 
     }
 
@@ -136,6 +153,42 @@ public class SignUpViewFacebook extends Fragment {
         // Create and show the dialog.
         DialogFragment newFragment = new TermsFloatingView();
         newFragment.show(ft, "dialog");
+    }
+    private boolean checkFields(){
+
+        boolean respuesta=true;
+
+        if(email.getText().toString().isEmpty()){
+            Toast.makeText(getActivity(),getString(R.string.email_error),Toast.LENGTH_SHORT).show();
+            respuesta=false;
+
+        }
+        else if(username.getText().toString().isEmpty()){
+            Toast.makeText(getActivity(),getString(R.string.username_error),Toast.LENGTH_SHORT).show();
+            respuesta=false;
+
+        }
+        else if(firtsName.getText().toString().isEmpty()){
+            Toast.makeText(getActivity(),R.string.firstname_error,Toast.LENGTH_SHORT).show();
+            respuesta=false;
+
+        }
+        else if(lastName.getText().toString().isEmpty()){
+            Toast.makeText(getActivity(),R.string.last_name,Toast.LENGTH_SHORT).show();
+            respuesta=false;
+
+        }
+        else if(dni.getText().toString().isEmpty()){
+            Toast.makeText(getActivity(),R.string.dni_error,Toast.LENGTH_SHORT).show();
+            respuesta=false;
+
+        }else if(countryAuto.getText().toString().isEmpty()) {
+            Toast.makeText(getActivity(),R.string.country_error,Toast.LENGTH_SHORT).show();
+            respuesta=false;
+        }
+        Log.i(TAG, "respuesta :" + respuesta);
+        return respuesta;
+
     }
 
 }

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fourgeeks.tuvuelovip.pasajero.PassengerMain;
+import fourgeeks.tuvuelovip.pasajero.login.LoginView;
 import fourgeeks.tuvuelovip.pasajero.passanger.terms.TermsService;
 import fourgeeks.tuvuelovip.pasajero.pojo.Terms;
 import fourgeeks.tuvuelovip.pasajero.R;
@@ -78,8 +81,8 @@ public class TermsFloatingView extends DialogFragment {
             public void onClick(View view) {
                 Cache.setTermsAndConditionsWereAccepted(true);
                 getFragmentManager().popBackStack();
-                Intent goToPassanger = new Intent(getActivity(),PassengerMain.class);
-                startActivity(goToPassanger);
+               goToLogin();
+                Toast.makeText(getActivity(),"inicia secion para comenzar!",Toast.LENGTH_LONG);
             }
         });
 
@@ -98,5 +101,13 @@ public class TermsFloatingView extends DialogFragment {
         super.onDestroy();
         if(subscription != null && !subscription.isUnsubscribed())
             subscription.unsubscribe();
+    }
+    private void goToLogin(){
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        LoginView loginView = new LoginView();
+        transaction.addToBackStack("termsFloatin");
+        transaction.add(R.id.holder_content,loginView, "loginview");
+        transaction.commit();
     }
 }

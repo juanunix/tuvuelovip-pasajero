@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,6 +116,7 @@ public class LoginView extends Fragment {
         });
 
         service = LoginController.getFacebookService();
+        //verifica si ya hay una cuenta de facebook iniciada
         facebookView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,12 +125,28 @@ public class LoginView extends Fragment {
                     loginButton.performClick();
                     loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email","id"));
                 }else {
-                   //verificar que tiene un token de la aplicacion y si lo tiene , enviar al usuario al passenger.Main
+                    Log.i("Facebook Result","you are log in");
+                    if(Cache.getUserToken()!= null){
+                        Intent goToPassenger = new Intent(getActivity(), PassengerMain.class);
+                        startActivity(goToPassenger);
+                        getActivity().finish();
+                    }else{
+                        Toast.makeText(getActivity(), "parece que no te has registrado aún\n por favor registrese para acceder a la aplicación", Toast.LENGTH_LONG)
+                                .show();
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transaction = fragmentManager.beginTransaction();
+                        SignUpViewFacebook signup_view = new SignUpViewFacebook();
+                        transaction.addToBackStack("view_login");
+                        transaction.add(R.id.holder_content, signup_view, "signup_view_facebook");
+                        transaction.commit();
+
+                    }
+                   /*verificar que tiene un token de la aplicacion y si lo tiene , enviar al usuario al passenger.Main
                     Toast.makeText(getActivity(), "ya tienes una cuenta iniciada en facebook", Toast.LENGTH_SHORT).show();
                     LoginManager.getInstance().logOut();
-                    Toast.makeText(getActivity(), "ya la cerre !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "ya la cerre !", Toast.LENGTH_LONG).show();*/
 
-                    //sendFacebookUser(AccessToken.getCurrentAccessToken().getToken(),null,null,null);
+
 
                 }
 
@@ -292,7 +310,7 @@ public class LoginView extends Fragment {
                 Log.i("SendFacebookUser", "Response from server " + response.body().getRegistered());
                 if(response.isSuccessful()){
                     Log.i("SendFacebookUser", "Response from server " + response.body().getRegistered());
-                   // Log.i("userId",userId);
+
 
                     if(response.body().getRegistered() == false) {
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -329,6 +347,7 @@ public class LoginView extends Fragment {
             public void onFailure(Call<SocialData> call, Throwable t) {
                 Log.e("SendFacebookUser","I coudn't conected code:"+
                         call.hashCode()+" request :"+call.request().toString());
+                Toast.makeText(getActivity(),"ocurrio un error, por favor inicie sesión de nuevo",Toast.LENGTH_LONG).show();
             }
         });
     }
