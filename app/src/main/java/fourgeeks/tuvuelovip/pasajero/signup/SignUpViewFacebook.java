@@ -25,10 +25,14 @@ import java.util.List;
 import java.util.Map;
 
 import fourgeeks.tuvuelovip.pasajero.R;
+import fourgeeks.tuvuelovip.pasajero.login.LoginRetroFitService;
 import fourgeeks.tuvuelovip.pasajero.pojo.Country;
 import fourgeeks.tuvuelovip.pasajero.pojo.UserFacebook;
 import fourgeeks.tuvuelovip.pasajero.util.Cache;
 import fourgeeks.tuvuelovip.pasajero.util.Util;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import rx.SingleSubscriber;
 import rx.Subscription;
 
@@ -47,12 +51,13 @@ public class SignUpViewFacebook extends Fragment {
     private Subscription subscription;
     private String facebookToken,facebookUserId;
     private Bundle bundle;
+    private SignUpRetroFitService service;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
         view = inflater.inflate(R.layout.view_singup_facebook, container, false);
-         bundle = getArguments();
+        bundle = getArguments();
         email = (TextInputEditText) view.findViewById(R.id.email);
         username = (TextInputEditText) view.findViewById(R.id.username);
         firtsName = (TextInputEditText) view.findViewById(R.id.firts_name);
@@ -61,6 +66,7 @@ public class SignUpViewFacebook extends Fragment {
         dni = (TextInputEditText) view.findViewById(R.id.dni);
         signupButton = (Button) view.findViewById(R.id.singup_button);
 
+        insertarDatos();
         SignUpService signUpService = new SignUpService();
         controller = new SignUpController(signUpService);
         try {
@@ -83,9 +89,10 @@ public class SignUpViewFacebook extends Fragment {
             @Override
             public void onClick(View view) {
                 if (checkFields()){
+                    saveUser();
 
                     if (Cache.termsAndConditionsWereAccepted()) {
-                        saveUser();
+
                     } else {
                         showTerms();
                     }
@@ -94,29 +101,35 @@ public class SignUpViewFacebook extends Fragment {
             }
         });
         Cache.setTermsAndConditionsWereAccepted(false);
-        insertarDatos();
+
         return view;
     }
 
     private void saveUser() {
-        subscription = controller.createUserFacebook(email.getText().toString(), username.getText().toString(),
-                firtsName.getText().toString(), lastName.getText().toString(),
-                countryMap.get(countryAuto.getText().toString()),
-                dni.getText().toString(),facebookToken,facebookUserId).subscribe(new SingleSubscriber<UserFacebook>() {
+        Log.i("facebook","info: pais: "+countryAuto.getText().toString()+
+                " apellido:"+lastName.getText().toString()+" nombre:"+firtsName.getText().toString()+
+                " usuario: "+username.getText().toString()+" email:"+email.getText().toString()+
+                " dni:"+dni.getText().toString()+" token"+ facebookToken+ "id: "+facebookUserId);
+
+        service.createUserFacebook(countryMap.get(countryAuto.getText().toString()),
+                lastName.getText().toString(),firtsName.getText().toString(),
+                username.getText().toString(),email.getText().toString(),
+                dni.getText().toString(), facebookToken,facebookUserId).enqueue(new Callback<UserFacebook>() {
+
             @Override
-            public void onSuccess(UserFacebook value) {
-                Log.d(TAG, "saveUser:onSuccess:" + value);
-                Toast.makeText(getActivity(), getString(R.string.register_success), Toast.LENGTH_SHORT).show();
-                getFragmentManager().popBackStack();
+            public void onResponse(Call<UserFacebook> call, Response<UserFacebook> response) {
+                Toast.makeText(getActivity(),"Registro exitoso",Toast.LENGTH_LONG);
+                Log.i("tag","code: "+response.code());
+                Log.i("tag","call "+call.request().toString());
             }
 
             @Override
-            public void onError(Throwable e) {
-                String msg = Util.msgFromRetrofitThrowable(SignUpViewFacebook.this, e);
-                Log.e(TAG, "saveUser:onError:" + msg);
-                Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<UserFacebook> call, Throwable t) {
+               Log.i("SignUpFacebook","I coud not connect");
             }
         });
+
+
     }
 
     @Override
@@ -175,19 +188,20 @@ public class SignUpViewFacebook extends Fragment {
 
     }
     private void insertarDatos(){
-        try{
-            email.setText(bundle.getString("email"));
-            firtsName.setText(bundle.getString("name").toString());
-            lastName.setText(bundle.getString("last"));
-            facebookToken=bundle.getString("token");
-            facebookUserId = bundle.getString("userID");
-            Toast.makeText(getActivity(),getString(R.string.facebook_help),Toast.LENGTH_LONG).show();
 
-        }catch (NullPointerException nu){
-
+       if(bundle.getInt("code") == 0) {
+           email.setText(bundle.getString("email"));
+           firtsName.setText(bundle.getString("name"));
+           lastName.setText(bundle.getString("last"));
+           facebookToken = bundle.getString("token");
+           facebookUserId = bundle.getString("userID");
+            Toast.makeText(getActivity(), getString(R.string.facebook_help), Toast.LENGTH_LONG).show();
+            Log.i("SignUpViewFacebook", "Info: token : " + bundle.getString("token") + " UserID: " + bundle.getString("userID"));
+        }else{
             facebookToken = AccessToken.getCurrentAccessToken().getToken();
             facebookUserId=AccessToken.getCurrentAccessToken().getUserId();
-            Log.i(TAG,"token"+facebookToken);
+            Log.i("SignUpViewFacebook", "Info: token : " + facebookToken + " UserID: " + facebookUserId);
+
         }
     }
 

@@ -4,8 +4,11 @@ import fourgeeks.tuvuelovip.pasajero.pojo.FirebaseToken;
 import fourgeeks.tuvuelovip.pasajero.pojo.Terms;
 import fourgeeks.tuvuelovip.pasajero.pojo.User;
 import fourgeeks.tuvuelovip.pasajero.pojo.UserFacebook;
+import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.POST;
@@ -27,6 +30,10 @@ public interface SignUpRetroFitService {
     Observable<Void> deleteToken(@Body FirebaseToken token);
 
     @POST("signup-facebook-passenger/")
-    Observable<UserFacebook>createUserFacebook(@Body UserFacebook userFacebook);
+    @FormUrlEncoded
+    Call<UserFacebook> createUserFacebook(@Field("country_id")int country_id,@Field("last_name")String last_name,
+                                          @Field("first_name")String first_name,@Field("username")String username,
+                                          @Field("email")String email,@Field("dni")String dni,
+                                          @Field("facebook_access_token")String facebookToken,@Field("facebookId")String facebookId);
 
 }

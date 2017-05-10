@@ -16,7 +16,8 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:background="@drawable/xxxhdpi2"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/login_container">
 
 
         <ImageView

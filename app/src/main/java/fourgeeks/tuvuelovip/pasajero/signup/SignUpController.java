@@ -1,5 +1,7 @@
 package fourgeeks.tuvuelovip.pasajero.signup;
 
+import fourgeeks.tuvuelovip.pasajero.api.URL;
+import fourgeeks.tuvuelovip.pasajero.login.RetrofitFacebookClient;
 import fourgeeks.tuvuelovip.pasajero.pojo.UserFacebook;
 import fourgeeks.tuvuelovip.pasajero.util.Util;
 import fourgeeks.tuvuelovip.pasajero.pojo.User;
@@ -81,18 +83,8 @@ public class SignUpController {
         return service.createUser(user);
     }
     /**
-     * Create a UserFacebook
-     * @param email
-     * @param username
-     * @param firstName
-     * @param lastName
-     * @param countryId
-     * @param facebook_token
-     * @param userId
-     * @return and Observable for creating a UserFacebook
-     */
 
-    public Single<UserFacebook> createUserFacebook(String email, String username, String firstName,
+     public Single<UserFacebook> createUserFacebook(String email, String username, String firstName,
                                                    String lastName, Integer countryId, String dni, String facebook_token,
                                                    String userId) {
 
@@ -120,5 +112,6 @@ public class SignUpController {
         UserFacebook userF = new UserFacebook(countryId, lastName, firstName, username, email, dni, dni,facebook_token, userId);
 
         return service.createUserFacebook(userF);
-    }
+    }*/
+
 }

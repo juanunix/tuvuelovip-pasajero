@@ -15,6 +15,6 @@ public interface SignUpServiceInterface {
     Single<User> createUser(User user);
     Single<Void> updateToken(FirebaseToken token);
     Single<Void> deleteToken(FirebaseToken token);
-    Single<UserFacebook>createUserFacebook(UserFacebook userFacebook);
+
 
 }

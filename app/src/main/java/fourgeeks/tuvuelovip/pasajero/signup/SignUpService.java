@@ -41,8 +41,4 @@ public class SignUpService implements SignUpServiceInterface {
         return service.deleteToken(token).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).toSingle();
     }
 
-    @Override
-    public Single<UserFacebook> createUserFacebook(UserFacebook userFacebook) {
-        return service.createUserFacebook(userFacebook).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).toSingle();
-    }
 }

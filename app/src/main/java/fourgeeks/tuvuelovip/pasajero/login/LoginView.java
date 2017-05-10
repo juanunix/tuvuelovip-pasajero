@@ -137,7 +137,8 @@ public class LoginView extends Fragment {
                         startActivity(goToPassenger);
                         getActivity().finish();
                     }else{
-
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("code",1);
                         Toast.makeText(getActivity(), "parece que no te has registrado aún\n por favor registrese para acceder a la aplicación", Toast.LENGTH_LONG)
                                 .show();
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -145,6 +146,7 @@ public class LoginView extends Fragment {
                         SignUpViewFacebook signup_view = new SignUpViewFacebook();
                         transaction.addToBackStack("view_login");
                         transaction.add(R.id.holder_content, signup_view, "signup_view_facebook");
+                        signup_view.setArguments(bundle);
                         transaction.commit();
 
                     }
@@ -323,12 +325,15 @@ public class LoginView extends Fragment {
 
 
                     if(response.body().getRegistered() == false) {
+
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         SignUpViewFacebook signup_view = new SignUpViewFacebook();
                         transaction.addToBackStack("view_login");
                         transaction.add(R.id.holder_content, signup_view, "signup_view_facebook");
+
                         Bundle bundle = new Bundle();
+                        bundle.putInt("code",0);
                         bundle.putString("name",name);
                         bundle.putString("last",lastName);
                         bundle.putString("email",email);
