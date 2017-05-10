@@ -46,13 +46,13 @@ public class SignUpViewFacebook extends Fragment {
     private Button signupButton;
     private Subscription subscription;
     private String facebookToken,facebookUserId;
-
+    private Bundle bundle;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
         view = inflater.inflate(R.layout.view_singup_facebook, container, false);
-        Bundle bundle = getArguments();
+         bundle = getArguments();
         email = (TextInputEditText) view.findViewById(R.id.email);
         username = (TextInputEditText) view.findViewById(R.id.username);
         firtsName = (TextInputEditText) view.findViewById(R.id.firts_name);
@@ -94,24 +94,8 @@ public class SignUpViewFacebook extends Fragment {
             }
         });
         Cache.setTermsAndConditionsWereAccepted(false);
-        try{
-            email.setText(bundle.getString("email"));
-            firtsName.setText(bundle.getString("name").toString());
-            lastName.setText(bundle.getString("last"));
-            facebookToken=bundle.getString("token");
-            facebookUserId = bundle.getString("userID");
-            Toast.makeText(getActivity(),getString(R.string.facebook_help),Toast.LENGTH_LONG).show();
-
-        }catch (NullPointerException nu){
-
-            facebookToken = AccessToken.getCurrentAccessToken().getToken();
-            facebookUserId=AccessToken.getCurrentAccessToken().getUserId();
-            Log.i(TAG,"token"+facebookToken);
-        }
+        insertarDatos();
         return view;
-
-
-
     }
 
     private void saveUser() {
@@ -189,6 +173,22 @@ public class SignUpViewFacebook extends Fragment {
         Log.i(TAG, "respuesta :" + respuesta);
         return respuesta;
 
+    }
+    private void insertarDatos(){
+        try{
+            email.setText(bundle.getString("email"));
+            firtsName.setText(bundle.getString("name").toString());
+            lastName.setText(bundle.getString("last"));
+            facebookToken=bundle.getString("token");
+            facebookUserId = bundle.getString("userID");
+            Toast.makeText(getActivity(),getString(R.string.facebook_help),Toast.LENGTH_LONG).show();
+
+        }catch (NullPointerException nu){
+
+            facebookToken = AccessToken.getCurrentAccessToken().getToken();
+            facebookUserId=AccessToken.getCurrentAccessToken().getUserId();
+            Log.i(TAG,"token"+facebookToken);
+        }
     }
 
 }

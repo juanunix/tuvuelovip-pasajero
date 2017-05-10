@@ -1,6 +1,8 @@
 package fourgeeks.tuvuelovip.pasajero.login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -40,6 +42,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.Set;
 
 import fourgeeks.tuvuelovip.pasajero.pojo.SocialData;
 import fourgeeks.tuvuelovip.pasajero.signup.SignUpViewFacebook;
@@ -68,6 +72,7 @@ public class LoginView extends Fragment {
     private LinearLayout facebookView;
     private LoginButton loginButton;
     private LoginRetroFitService service;
+    private SharedPreferences preferences;
 
     @Nullable
     @Override
@@ -75,7 +80,7 @@ public class LoginView extends Fragment {
         //callBack de facebook
         FacebookSdk.sdkInitialize(getActivity());
         callbackM = CallbackManager.Factory.create();
-
+        preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         view = inflater.inflate(R.layout.view_login, container, false);
         user = (TextInputEditText) view.findViewById(R.id.user);
         password = (TextInputEditText) view.findViewById(R.id.password);
@@ -126,11 +131,13 @@ public class LoginView extends Fragment {
                     loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email","id"));
                 }else {
                     Log.i("Facebook Result","you are log in");
+                    Toast.makeText(getContext(),"ya tienes una cuenta iniciada como: "+preferences.getString("userName",null),Toast.LENGTH_LONG).show();
                     if(Cache.getUserToken()!= null){
                         Intent goToPassenger = new Intent(getActivity(), PassengerMain.class);
                         startActivity(goToPassenger);
                         getActivity().finish();
                     }else{
+
                         Toast.makeText(getActivity(), "parece que no te has registrado aún\n por favor registrese para acceder a la aplicación", Toast.LENGTH_LONG)
                                 .show();
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -263,6 +270,9 @@ public class LoginView extends Fragment {
                                 try{
                                     sendFacebookUser(AccessToken.getCurrentAccessToken().getToken(),object.getString("first_name")
                                             ,object.getString("last_name"),object.getString("email"),object.getString("id"));
+                                    SharedPreferences.Editor editor = preferences.edit();
+                                    editor.putString("userName",object.getString("name"));
+                                    editor.commit();
 
                                      Log.i("user ID",loginResult.getAccessToken().getUserId());
                                      Log.i("user acces",AccessToken.getCurrentAccessToken().getUserId());

@@ -1,6 +1,7 @@
 package fourgeeks.tuvuelovip.pasajero;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -43,6 +44,7 @@ public class PassengerMain extends AppCompatActivity {
     private static final String TAG = PassengerMain.class.getSimpleName();
     private DrawerLayout drawerLayout;
     private int currentNavigationItem = R.id.home;
+    private SharedPreferences preferences;
 
     @Override
     public void onBackPressed() {
@@ -66,7 +68,7 @@ public class PassengerMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.view_main);
-
+        preferences = this.getPreferences(MODE_PRIVATE);
         Cache.init(this);
 
         if (!Cache.isSesionActive()) {
@@ -223,6 +225,11 @@ public class PassengerMain extends AppCompatActivity {
         }
 
         finish();
+        SharedPreferences.Editor editor = preferences.edit();
+        if(editor.clear().commit()){
+            Log.i("Closing facebook","name storage : "+preferences.getString("userName","sin nombre"));
+        }
+
         LoginManager.getInstance().logOut();
         Log.i("Closing facebook","sesión cerrada");
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
